@@ -1,6 +1,6 @@
 def on_received_number(receivedNumber):
     music.set_built_in_speaker_enabled(True)
-    music.set_volume(51)
+    music.set_volume(109)
     if receivedNumber == 1:
         music.play_tone(988, music.beat(BeatFraction.EIGHTH))
         maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CW, 80)
@@ -8,9 +8,7 @@ def on_received_number(receivedNumber):
         music.play_tone(988, music.beat(BeatFraction.EIGHTH))
         maqueen.motor_run(maqueen.Motors.ALL, maqueen.Dir.CCW, 80)
     elif receivedNumber == 3:
-        music.set_built_in_speaker_enabled(True)
         music.play_tone(988, music.beat(BeatFraction.EIGHTH))
-        music.set_built_in_speaker_enabled(False)
         maqueen.motor_run(maqueen.Motors.M2, maqueen.Dir.CW, 80)
         maqueen.motor_run(maqueen.Motors.M1, maqueen.Dir.CW, 0)
     elif receivedNumber == 4:
@@ -31,13 +29,6 @@ strip = neopixel.create(DigitalPin.P15, 4, NeoPixelMode.RGB)
 
 def on_forever():
     global R, G, B
-    basic.show_leds("""
-        . # . # .
-                . # . # .
-                . . . . .
-                # . . . #
-                . # # # .
-    """)
     R = 0
     G = 0
     B = 0
@@ -62,7 +53,7 @@ def on_forever():
         strip.show_color(neopixel.rgb(R, G, B))
         basic.pause(5)
     for index6 in range(255):
-        G -= 1
+        G += 0 - 1
         strip.show_color(neopixel.rgb(R, G, B))
         basic.pause(5)
 basic.forever(on_forever)
